@@ -614,22 +614,23 @@ async def extract_pdf(file: UploadFile = File(...), method: str = Form(...)):
 # Route for extracting content from websites
 @app.post("/extract/website/")
 async def extract_website(url: str = Form(...), method: str = Form(...)):
-    """Extract content from a website and upload Markdown to S3 based on the selected method."""
+    logging.info(f"Received URL: {url}")
+    logging.info(f"Extraction Method: {method}")
     try:
         if method == "open-source":
             extracted_text, image_urls, extracted_links, extracted_tables = extract_website_content(url)
+            logging.info(f"Extracted Text: {extracted_text[:100]}")  # Log first 100 chars
             md_s3_url = save_to_markdown(url, extracted_text, image_urls, extracted_links, extracted_tables)
-
         elif method == "enterprise":
-            md_s3_url = enterprise_extract_website(url)  # Calls the enterprise extraction function
-
+            md_s3_url = enterprise_extract_website(url)
         else:
             raise HTTPException(status_code=400, detail="Invalid extraction method. Choose 'open-source' or 'enterprise'.")
-
-        return {"markdown_url": md_s3_url}  # Return the S3 URL of the extracted Markdown file
-
+        logging.info(f"Markdown S3 URL: {md_s3_url}")
+        return {"markdown_url": md_s3_url}
     except Exception as e:
-        raise HTTPException(status_code=500, detail=f"Error extracting website content: {str(e)}")
+        logging.error(f"Error in extract_website: {e}")
+        raise HTTPException(status_code=500, detail=f"Error extracting website content: {e}")
+
 
 
 # Root route to show available endpoints
