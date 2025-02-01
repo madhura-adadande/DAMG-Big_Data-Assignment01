@@ -3,21 +3,22 @@ import requests
 from PIL import Image
 from io import BytesIO
 
-API_URL = "http://127.0.0.1:8080"  # Backend FastAPI URL
+#API_URL = "http://127.0.0.1:8080"  # Backend FastAPI URL
 
 BACKEND_URL = "https://damg-big-data-assignment01.onrender.com"
+
 
 def pdf_to_markdown(file_bytes, file_name, method):
     files = {"file": (file_name, file_bytes, "application/pdf")}
     data = {"method": method}
-    resp = requests.post(f"{API_URL}/extract/pdf/", files=files, data=data)
+    resp = requests.post(f"{BACKEND_URL}/extract/pdf/", files=files, data=data)
     resp.raise_for_status()
     return resp.json()
 
 
 def website_to_markdown(url, method):
     data = {"url": url, "method": method}
-    resp = requests.post(f"{API_URL}/extract/website/", data=data)
+    resp = requests.post(f"{BACKEND_URL}/extract/website/", data=data)
     resp.raise_for_status()
     return resp.json()
 
