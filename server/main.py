@@ -646,6 +646,5 @@ async def root():
 
 
 if __name__ == "__main__":
-    url = "https://en.wikipedia.org/wiki/DeepSeek"
-    result = enterprise_extract_website(url)
-    print(result)
+    import uvicorn
+    uvicorn.run(app, host="0.0.0.0", port=10000)

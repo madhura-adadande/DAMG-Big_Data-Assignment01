@@ -5,6 +5,7 @@ from io import BytesIO
 
 API_URL = "http://127.0.0.1:8080"  # Backend FastAPI URL
 
+BACKEND_URL = "https://damg-big-data-assignment01.onrender.com"
 
 def pdf_to_markdown(file_bytes, file_name, method):
     files = {"file": (file_name, file_bytes, "application/pdf")}
