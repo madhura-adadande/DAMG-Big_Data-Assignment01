@@ -13,7 +13,7 @@ Technologies Involved
   * Enterprise: Apify
 
 ## Live Link
-https://damg-bigdata-assignment01-svbf4wpkbycm35ajafjguw.streamlit.app/
+https://damg-bigdata-assignment01-vpzqxyggtg5qlv9ecw5ccy.streamlit.app/
 
 ## Codelabs
 https://codelabs-preview.appspot.com/?file_id=1Zy725sp4bystXNxxGrwXap_8-4qSC3uXKMOVPpqwWxU#0
