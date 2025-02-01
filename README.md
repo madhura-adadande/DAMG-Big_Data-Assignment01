@@ -15,6 +15,9 @@ Technologies Involved
 ## Live Link
 https://damg-bigdata-assignment01-svbf4wpkbycm35ajafjguw.streamlit.app/
 
+## Codelabs
+https://codelabs-preview.appspot.com/?file_id=1Zy725sp4bystXNxxGrwXap_8-4qSC3uXKMOVPpqwWxU#0
+
 ## Architecture Diagram
 ![data_extraction_diagram](https://github.com/user-attachments/assets/253c875a-afa6-4353-9f5a-04231af16d78)
 
@@ -67,6 +70,10 @@ https://damg-bigdata-assignment01-svbf4wpkbycm35ajafjguw.streamlit.app/
    * Upload a PDF or Enter a Website URL.
    * Verify Markdown extraction and Image Previews.
    * Check if files are correctly uploaded to S3.
+
+## Prototyping
+
+Unscrapped, jina.ai, azure document intelligence, uvicorn, scrapy, docusign, amazon tesseract, diffbot, camelot
 
 ## Contributions
 - Vemana Anil Kumar - 33.3%
