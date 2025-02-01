@@ -12,6 +12,9 @@ Technologies Involved
   * Open Source: BeuatifulSoup, requests
   * Enterprise: Apify
 
+## Live Link
+https://damg-bigdata-assignment01-svbf4wpkbycm35ajafjguw.streamlit.app/
+
 ## Architecture Diagram
 ![data_extraction_diagram](https://github.com/user-attachments/assets/253c875a-afa6-4353-9f5a-04231af16d78)
 
