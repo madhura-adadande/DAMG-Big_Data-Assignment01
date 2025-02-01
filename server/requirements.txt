@@ -18,3 +18,5 @@ apify-client  # Apify client for website extraction
 
 # Optional dependencies
 watchdog  # Hot reloading for Streamlit
+tabulate
+tabula-py
