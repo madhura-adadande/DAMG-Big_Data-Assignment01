@@ -45,7 +45,7 @@ APIFY_API_TOKEN = os.getenv("APIFY_API_TOKEN")
 
 client = ApifyClient(APIFY_API_TOKEN)
 # FastAPI app
-app = FastAPI()
+
 
 ################################################################################
 #                         S3 UPLOAD FUNCTION                                   #
@@ -591,7 +591,9 @@ def enterprise_extract_website(url):
         logging.exception(f"Error extracting website content: {str(e)}")
         raise HTTPException(status_code=500, detail=f"Error extracting website content: {str(e)}")
 
+app = FastAPI()
 
+# Route for extracting content from PDFs
 @app.post("/extract/pdf/")
 async def extract_pdf(file: UploadFile = File(...), method: str = Form(...)):
     """Extract content from a PDF using Open-Source or Enterprise method."""
@@ -604,10 +606,12 @@ async def extract_pdf(file: UploadFile = File(...), method: str = Form(...)):
     elif method == "enterprise":
         md_s3_url = enterprise_extract_pdf(temp_pdf_path)
     else:
-        raise HTTPException(status_code=400, detail="Invalid extraction method.")
+        raise HTTPException(status_code=400, detail="Invalid extraction method. Choose 'open-source' or 'enterprise'.")
 
     return {"markdown_url": md_s3_url}
 
+
+# Route for extracting content from websites
 @app.post("/extract/website/")
 async def extract_website(url: str = Form(...), method: str = Form(...)):
     """Extract content from a website and upload Markdown to S3 based on the selected method."""
@@ -626,6 +630,19 @@ async def extract_website(url: str = Form(...), method: str = Form(...)):
 
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Error extracting website content: {str(e)}")
+
+
+# Root route to show available endpoints
+@app.get("/")
+async def root():
+    return {
+        "message": "PDF Processing API",
+        "version": "1.0.0",
+        "endpoints": {
+            "/extract/pdf/": "Extract content from PDF file using open-source or enterprise method",
+            "/extract/website/": "Extract content from website using open-source or enterprise method",
+        }
+    }
 
 
 if __name__ == "__main__":

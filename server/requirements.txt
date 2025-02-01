@@ -1,0 +1,20 @@
+# FastAPI dependencies
+fastapi
+uvicorn
+
+python-multipart
+
+# Other common dependencies
+boto3  # AWS S3 integration
+python-dotenv  # For environment variable management
+pdfplumber  # For PDF text and table extraction
+PyMuPDF  # Another PDF extraction library
+beautifulsoup4  # For web scraping
+requests  # For HTTP requests
+openpyxl  # For handling Excel files
+pandas  # For data processing
+pdfservices-sdk  # Adobe PDF Services SDK
+apify-client  # Apify client for website extraction
+
+# Optional dependencies
+watchdog  # Hot reloading for Streamlit
